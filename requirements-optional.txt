@@ -1,0 +1,2 @@
+# Only for the optional SHAP section in Churn_01_Modeling_and_Interpretation.ipynb
+shap==0.52.0

@@ -1,0 +1,5 @@
+telco_churn_prepared.csv
+.venv/
+.ipynb_checkpoints/
+__pycache__/
+*.csv

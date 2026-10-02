@@ -1,0 +1,9 @@
+# Tested with Python 3.14 (Windows). Versions are the ones the notebooks were last run against.
+numpy==2.5.3
+pandas==3.0.6
+matplotlib==3.11.2
+scikit-learn==1.9.1
+
+# To run the notebooks from a terminal / jupyter
+ipykernel==7.4.0
+nbconvert==7.17.1
