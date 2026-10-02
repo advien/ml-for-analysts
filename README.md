@@ -12,7 +12,7 @@ This repository contains the practical materials that have been preserved from t
 
 ## Selected curriculum
 
-The conceptual introduction (Lesson 1) had no notebook, so the numbering starts at 2.
+Lesson 1 was conceptual: we discussed ML aloud and studied the core concepts using external resources, so there was no notebook. Code starts in Lesson 2, and the file numbers follow the lesson numbers.
 
 | Notebook | Topic |
 |---|---|
@@ -40,16 +40,25 @@ jupyter nbconvert --to notebook --execute --inplace Lesson_03_Regression_Monthly
 
 Run the two churn notebooks in order: `Lesson_07_Churn_00` writes `telco_churn_prepared.csv`, which `Lesson_07_Churn_01` reads. The SHAP cell in `Lesson_07_Churn_01` is optional and needs `pip install -r requirements-optional.txt`.
 
-All notebooks were last executed top to bottom with Python 3.14 and the versions pinned in `requirements.txt`. Notebooks are stored without outputs.
+All notebooks were last executed top to bottom with Python 3.14 and the versions pinned in `requirements.txt` (notably pandas 3.0.6; pandas 2.x has not been tested). Notebooks are stored without outputs. The optional SHAP cell can take several minutes.
 
 ## Data
 
 - **All lessons except the churn capstone** generate small synthetic datasets inside the notebook. No external files are needed.
-- **Telco Customer Churn** is the IBM Cognos Analytics sample dataset (a fictional telecom company, 7,043 customers). It is **not** included in this repository. `Lesson_07_Churn_00` downloads it from the public [IBM/telco-customer-churn-on-icp4d](https://github.com/IBM/telco-customer-churn-on-icp4d) repository (with the [plotly/datasets](https://github.com/plotly/datasets) mirror as a fallback). Rights to the data belong to its original owners. If neither download works, the notebook falls back to a synthetic dataset with random churn, so the modelling results in that case are meaningless.
+- **Telco Customer Churn** is an open teaching dataset commonly attributed to IBM (Cognos Analytics sample data; a fictional telecom company, 7,043 customers), widely distributed via [Kaggle](https://www.kaggle.com/datasets/blastchar/telco-customer-churn) and GitHub. It is **not** included in this repository. `Lesson_07_Churn_00` downloads it from the public [IBM/telco-customer-churn-on-icp4d](https://github.com/IBM/telco-customer-churn-on-icp4d) repository (with the [plotly/datasets](https://github.com/plotly/datasets) mirror as a fallback); both links are pinned to specific commits. Rights to the data belong to its original owners. If neither download works, the notebook prints a warning and falls back to a synthetic dataset with random churn, so the modelling results in that case are meaningless.
 
 ## About these files
 
-The notebooks are archived course material, not a rewritten 2026 curriculum. They were preserved as they were taught; the first commit in this repository's history contains them unchanged. Later commits only fix portability issues so they run on current library versions (for example, string dtypes in pandas 3, and matplotlib axes handling in scikit-learn's `*Display.from_predictions`), and add the data attribution above. One deliberate change to the data: in `Lesson_05_Binary_FlightDelays` the synthetic delay signal was too weak (the random forest scored about chance level, ROC-AUC ≈ 0.49), so the sample size and effect sizes were increased. The teaching content, models and discussion questions were left as they were.
+The notebooks are archived course material, not a rewritten 2026 curriculum. AI assistance was used to bring them back to their original clean, runnable state after the course, and Claude (Anthropic) helped add this archive to GitHub — thank you.
+
+Changes relative to the preserved notebooks are small and deliberate:
+
+- **Portability:** string dtypes in pandas 3, and matplotlib axes handling in scikit-learn's `*Display.from_predictions`, so the notebooks run on current library versions.
+- **Synthetic data:** in `Lesson_05_Binary_FlightDelays` the delay signal was too weak (the random forest scored about chance level, ROC-AUC ≈ 0.49), so the sample size and effect sizes were increased. In `Lesson_04_TextClassification_Products` 18 extra phrases were added, because with 36 phrases the train and test sets shared almost no words.
+- **Support for discussion questions:** where a discussion question had no output to rely on, a short cell or note was added (regression and logistic-regression coefficients, churn rate by group, an accuracy baseline in `Lesson_06`, short notes on data leakage and on feature importances).
+- **Churn data:** source attribution, pinned download links, and a clear warning when the synthetic fallback is used. The `#TO-DO` cell in `Lesson_07_Churn_00` is an in-class exercise stub; its solution is in the next cell.
+
+The models and the teaching structure were not changed.
 
 ## License
 
